@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'  // Nom de l’installation Maven configurée dans Jenkins
+        maven 'Maven'
     }
 
     stages {
@@ -24,9 +24,8 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 echo "🕵️ Lancement de l’analyse SonarQube"
-                // 'SonarQube' = nom configuré dans Jenkins → Manage Jenkins → Configure System → SonarQube Servers
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
+                    sh 'mvn sonar:sonar -Dsonar.host.url=http://10.255.255.254:9000'
                 }
             }
         }
