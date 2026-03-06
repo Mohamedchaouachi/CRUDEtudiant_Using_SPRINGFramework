@@ -30,30 +30,12 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                echo "🐳 Construction de l’image Docker"
-                sh 'docker build -t crudetudiant:latest .'
-            }
-        }
-
-        stage('Run Docker Container') {
-            steps {
-                echo "🚀 Lancement du conteneur Docker"
-                sh '''
-                    docker stop crudetudiant-container || true
-                    docker rm crudetudiant-container || true
-                    docker run -d --name crudetudiant-container -p 8080:8080 crudetudiant:latest
-                '''
-            }
-        }
-
     }
 
     post {
         success {
             echo "✅ Pipeline terminé avec succès"
-        }
+  }
         failure {
             echo "❌ Pipeline échoué, vérifier les logs"
         }
