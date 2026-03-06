@@ -1,6 +1,7 @@
 pipeline {
 agent any
 
+
 tools {
     maven 'Maven'
 }
@@ -56,6 +57,6 @@ post {
         echo "❌ Pipeline échoué, vérifier les logs"
     }
 }
-```
+
 
 }
